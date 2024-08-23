@@ -46,15 +46,11 @@ void get_ip(char *URL ,ip *ad)
 
     sscanf(URL,"ip=%d.%d.%d.%d",&ad->a,&ad->b,&ad->c,&ad->d);
 
-    if(ad->a > 255 || ad->b > 255 || ad->c > 255 || ad->d < 0 ||ad->a < 0 || ad->b < 0 || ad->c < 0 || ad->d < 0)
+    if(ad->a > 255 || ad->b > 255 || ad->c > 255 || ad->d > 255 || ad->d < 0 ||ad->a < 0 || ad->b < 0 || ad->c < 0 || ad->d < 0)
     {
-        printf("Ce n'est pas un addresse ip\n");
+        printf("Ce n'est pas un addresse ip</body><html>\n");
         exit(EXIT_SUCCESS);
     }
-
-    URL1=getenv("QUERY_STRING");
-    sscanf(URL1,"ip=%[^.].%[^.].%[^.].%[^.]",address1 ,address2 ,address3 ,address4);
-    printf("%s",address1);
 }
 void check_ip(ip *ad)
 {
@@ -87,5 +83,6 @@ void check_ip(ip *ad)
 void page_foot()
 {
     printf("</p></body>");
+    printf("<a href=""http://localhost/address_ip/address_ip.html"">");
     printf("</html>");    
 }
